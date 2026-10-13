@@ -1,0 +1,18 @@
+[package]
+name = "hello-program"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+borsh = { version = "1", features = ["derive"] }
+solana-program = "5"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+custom-heap = []
+custom-panic = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
